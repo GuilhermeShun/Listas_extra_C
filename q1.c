@@ -1,30 +1,30 @@
-//Lista 4
+//Lista 6
 //Questão 1
 
 #include <stdio.h>
 
-int main(){
-    //O vetor A será o inicial e o B receberá os valores de A adulterados
-    float A[5], B[5];
-    
-    int i;
-    
-    //Atribuição dos valores de A via teclado
-    printf("Insira os 5 valores: \n");
-    for(i=0; i<5; ++i){
-        scanf("%f", &A[i]);
+int A[5][3], B[5][3], C[5][3], i, j; 
+
+void main(){
+    for(i=0; i<(sizeof(A[0])/sizeof(A[0][0])); ++i){
+        for(j=0; j<(sizeof(A)/sizeof(A[0])); ++j){
+            scanf("%d", &A[i][j]);
+        }
     }
-    
-    //Atribuição dos valores de B, por meio de operações com os de A
-    for(i=0; i<5; ++i){
-        B[i] = A[i] * 3;    
+    for(i=0; i<(sizeof(B[0])/sizeof(B[0][0])); ++i){
+        for(j=0; j<(sizeof(B)/sizeof(B[0])); ++j){
+            scanf("%d", &B[i][j]);
+        }
     }
-        
-    //Exibição dos valores de B
-    printf("Valores atualizados: \n");
-    for(i=0; i<5; ++i){
-        printf("%f\n", B[i]);
+    for(i=0; i<(sizeof(C[0])/sizeof(C[0][0])); ++i){
+        for(j=0; j<(sizeof(C)/sizeof(C[0])); ++j){
+            C[i][j] = A[i][j] + B[i][j];
+        }
     }
-    
-    return 0;
+    for(i=0; i<(sizeof(A[0])/sizeof(A[0][0])); ++i){
+        for(j=0; j<(sizeof(A)/sizeof(A[0])); ++j){
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }    
 }

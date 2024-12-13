@@ -1,28 +1,39 @@
-//Lista 4
+//Lista 6
 //Questão 2
 
 #include <stdio.h>
-int A[6], B[6], i;
 
-int fatorial(int numero) {
-	int resultado = 1;
-	int cont;
-	for(cont=numero; cont>=1; --cont) {
-		resultado = resultado*cont;
-	    }
-	return resultado;
-}
-int main() {
-	for(i=0; i<6; ++i) {
-		scanf("%d", &A[i]);
-	}
-	for(i=0; i<6; ++i) {
-		B[i] = fatorial(A[i]);
-	}
+int A[7], B[7], C[7][2], i, j; 
+int numero_de_elementos_de_A = sizeof(A)/sizeof(A[0]);
+int numero_de_elementos_de_B = sizeof(B)/sizeof(B[0]);
+int numero_de_colunas_de_C = sizeof(C[0])/sizeof(C[0][0]);
+int numero_de_linhas_de_C =sizeof(C)/sizeof(C[0]);
 
-	for(i=0; i<6; ++i) {
-		printf("%d ", B[i]);
-	}
-	return 0;
+void main(){
+    
+    for(i=0; i<numero_de_elementos_de_A; ++i){
+        scanf("%d", &A[i]);
+    }
+    
+    for(i=0; i<numero_de_elementos_de_B; ++i){
+        scanf("%d", &B[i]);
+    }
 
+    for(i=0; i<numero_de_colunas_de_C; ++i){
+        for(j=0; j<numero_de_linhas_de_C; ++j){
+            if(i==0){
+                C[j][i] = A[j];
+            }
+            else{
+                C[j][i] = B[j];
+            }
+        }
+    }
+    
+    for(i=0; i<numero_de_linhas_de_C; ++i){
+        for(j=0; j<numero_de_colunas_de_C; ++j){
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
 }
